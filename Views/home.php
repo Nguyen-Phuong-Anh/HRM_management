@@ -27,6 +27,23 @@
     <link rel="stylesheet" href="styles.css" type="text/css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- mdboostrap -->
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- MDB -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+      rel="stylesheet"
+    />
     <style>
         .homeBody {
           display: flex;
@@ -53,6 +70,12 @@
     </style>
 </head>
 <body class="homeBody">
+    <!-- mdboostrap -->
+    <!-- MDB -->
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
+    ></script>
   <div class='d-flex flex-column flex-shrink-0 p-3 text-white bg-dark' style='width: 280px;'>
     <a href='.?route=home' class='d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none'>
       <span class='fs-4'>UTT</span>
@@ -70,7 +93,7 @@
       
       <li>
         <li class='mb-1'>
-            <a href='.?route=home'>
+            <a href='.?route=profile'>
               <button class='btn btn-toggle text-white align-items-center rounded'>
               <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-wallet2" viewBox="0 0 20 20">
                 <path d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499L12.136.326zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484L5.562 3zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z"/>
@@ -191,11 +214,17 @@
   <div class="body2">
       <?php
       switch ($route) {
-        // case 'home':
-        //   require_once('./Controllers/AdminController.php');
-        //   $controller = new AdminController();
-        //   $controller->showManageAccount();
-        //   break;
+        case 'profile':
+          require_once('./Controllers/ViewController.php');
+          $controller = new ViewController();
+          $controller->showProfile();
+          break;
+
+        case 'create_prf':
+          require_once('./Controllers/ViewController.php');
+          $controller = new ViewController();
+          $controller->showCreatePrf();
+          break;
       }
       ?>
   </div>

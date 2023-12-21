@@ -18,7 +18,7 @@
             $controller->processLogout();
             break;
 
-        case 'home':
+        case 'home': case 'profile': case 'create_prf':
             require_once('./Controllers/ViewController.php');
             $controller = new ViewController();
             $controller->showHome();
