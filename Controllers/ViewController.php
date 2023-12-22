@@ -11,5 +11,13 @@
         public function showCreatePrf() {
             require_once('./Views/profile/createProfile.php');
         }
+
+        public function showTeaching() {
+            require_once('./Views/teaching/teaching.php');
+        }
+
+        public function showCreateTch() {
+            require_once('./Views/teaching/createTeaching.php');
+        }
     }
 ?>

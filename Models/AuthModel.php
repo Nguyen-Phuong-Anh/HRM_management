@@ -2,7 +2,7 @@
     class AuthModel {
         public function authenticate($username) {
             require_once('./Config/DBConn.php');
-            $sql = "SELECT * FROM taiKhoan WHERE tenTaiKhoan= ?;";
+            $sql = "SELECT * FROM TaiKhoan WHERE tenTaiKhoan= ?;";
             $stmt = mysqli_stmt_init($conn); //create a beforehand statement to ensure the security
 
             if(!mysqli_stmt_prepare($stmt, $sql)) { //Prepares an SQL statement for execution -> return a boolean value
