@@ -18,7 +18,7 @@
             $controller->processLogout();
             break;
 
-        case 'home': case 'profile': case 'create_prf': case 'profile_info': case 'employee_info' : case 'create_employee' :
+        case 'home': case 'profile': case 'create_prf': case 'profile_info': case 'employee_info' : case 'create_employee' : case 'bonus' : case 'create_bonus': case 'change_bonus': case 'penalty': case 'create_penalty' : case 'change_penalty' :
             require_once('./Controllers/ViewController.php');
             $controller = new ViewController();
             $controller->showHome();

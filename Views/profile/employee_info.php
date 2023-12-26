@@ -38,7 +38,7 @@
 
 <div class="mt-4 mb-4">
     <h1>Thông tin nhân viên</h1>
-    <h5 class="fst-italic mb-0"><?php echo isset($data[0]['maHoSo']) ? 'Mã hồ sơ: ' . $data[0]['maHoSo'] : 'Chưa có thông tin về nhân viên'; ?></h5>
+    <h5 class="fst-italic mb-0"><?php echo isset($data[0][0]['maHoSo']) ? 'Mã hồ sơ: ' . $data[0][0]['maHoSo'] : 'Chưa có thông tin về nhân viên'; ?></h5>
 
     <table class="tb mt-5 mb-3">
         <thead>
@@ -55,7 +55,7 @@
                                 <p>Mã nhân viên</p> 
                             </td>
                             <td>
-                                <span>" . (isset($data[0]['maNhanVien']) ? $data[0]['maNhanVien'] : '') . "</span>
+                                <span>" . (isset($data[0][0]['maNhanVien']) ? $data[0][0]['maNhanVien'] : '') . "</span>
                             </td>
                         </tr>
                         <tr class='textbox'>
@@ -63,7 +63,7 @@
                                 <p>Bằng cấp</p> 
                             </td>
                             <td>
-                                <span>" . (isset($data[0]['bangCap']) ? $data[0]['bangCap'] : '') . "</span>
+                                <span>" . (isset($data[0][0]['bangCap']) ? $data[0][0]['bangCap'] : '') . "</span>
                             </td>
                         </tr>
                         <tr class='textbox'>
@@ -71,7 +71,7 @@
                                 <p>Chức vụ</p> 
                             </td>
                             <td>
-                                <span>" . (isset($data[0]['chucVu']) ? $data[0]['chucVu'] : '') . "</span>
+                                <span>" . (isset($data[0][0]['chucVu']) ? $data[0][0]['chucVu'] : '') . "</span>
                             </td>
                         </tr>
                         <tr class='textbox'>
@@ -79,7 +79,7 @@
                                 <p>Phòng ban</p> 
                             </td>
                             <td>
-                                <span>" . (isset($data[0]['phongBan']) ? $data[0]['phongBan'] : '') . "</span>
+                                <span>" . (isset($data[0][0]['phongBan']) ? $data[0][0]['phongBan'] : '') . "</span>
                             </td>
                         </tr>
                         <tr class='textbox'>
@@ -87,7 +87,7 @@
                                 <p>Khoa</p> 
                             </td>
                             <td>
-                                <span>" . (isset($data[0]['khoa']) ? $data[0]['khoa'] : '') . "</span>
+                                <span>" . (isset($data[0][0]['khoa']) ? $data[0][0]['khoa'] : '') . "</span>
                             </td>
                         </tr>
                         <tr class='textbox'>
@@ -95,7 +95,7 @@
                                 <p>Email</p> 
                             </td>
                             <td>
-                                <span>" . (isset($data[0]['email']) ? $data[0]['email'] : '') . "</span>
+                                <span>" . (isset($data[0][0]['email']) ? $data[0][0]['email'] : '') . "</span>
                             </td>
                         </tr>
                         <tr class='textbox'>
@@ -103,7 +103,7 @@
                                 <p>Ngày bắt đầu</p> 
                             </td>
                             <td>
-                                <span>" . (isset($data[0]['ngayBatDau']) ? $data[0]['ngayBatDau'] : '') . "</span>
+                                <span>" . (isset($data[0][0]['ngayBatDau']) ? $data[0][0]['ngayBatDau'] : '') . "</span>
                             </td>
                         </tr>
                         <tr class='textbox'>
@@ -111,7 +111,7 @@
                                 <p>Ngày kết thúc</p> 
                             </td>
                             <td>
-                                <span>" . (isset($data[0]['ngayKetThuc']) ? $data[0]['ngayKetThuc'] : '') . "</span>
+                                <span>" . (isset($data[0][0]['ngayKetThuc']) ? $data[0][0]['ngayKetThuc'] : '') . "</span>
                             </td>
                         </tr>
                     </tbody>";
@@ -134,36 +134,54 @@
         <form action="" method="post">
             <div class="modal-body">
             <div class="form-outline" data-mdb-input-init>
-                <input name="maNhanVien" type="text" class="form-control form-control-lg" value="<?php echo isset($data[0]['maNhanVien']) ? $data[0]['maNhanVien'] : ''; ?>">
+                <input name="maNhanVien" type="text" class="form-control form-control-lg" value="<?php echo isset($data[0][0]['maNhanVien']) ? $data[0][0]['maNhanVien'] : ''; ?>">
                 <label class="form-label">Mã nhân viên</label>
             </div>
             <div class="form-outline mt-3" data-mdb-input-init>
-                <input name="bangCap" type="text" class="form-control form-control-lg" value="<?php echo isset($data[0]['bangCap']) ? $data[0]['bangCap'] : ''; ?>">
+                <input name="bangCap" type="text" class="form-control form-control-lg" value="<?php echo isset($data[0][0]['bangCap']) ? $data[0][0]['bangCap'] : ''; ?>">
                 <label class="form-label">Bằng cấp</label>
             </div>
             <div class="form-outline mt-3" data-mdb-input-init>
-                <input name="chucVu" type="text" class="form-control form-control-lg" value="<?php echo isset($data[0]['chucVu']) ? $data[0]['chucVu'] : ''; ?>">
+                <input name="chucVu" type="text" class="form-control form-control-lg" value="<?php echo isset($data[0][0]['chucVu']) ? $data[0][0]['chucVu'] : ''; ?>">
                 <label class="form-label">Chức vụ</label>
             </div>
-            <div class="form-outline mt-3" data-mdb-input-init>
-                <input name="phongBan" type="text" class="form-control form-control-lg" value="<?php echo isset($data[0]['phongBan']) ? $data[0]['phongBan'] : ''; ?>">
-                <label class="form-label">Phòng ban</label>
+
+            <div class="filter-group mt-3 mb-2">
+                <label for="phongBan">Phòng ban</label>
+                <select class="form-control" name="phongBan">
+                    <option value="">Tất cả</option>
+                    <?php
+                        while ($row = mysqli_fetch_assoc($data[2])) {
+                            $selectedPhongBan = ($row['tenPB'] == $data[0][0]['phongBan']) ? 'selected="selected"' : '';
+                            echo '<option value="'.$row['tenPB'].'" '.$selectedPhongBan.'>'.$row['tenPB'].'</option>';
+                        }
+                    ?>
+                </select>
+            </div>
+
+            <div class="filter-group mt-3">
+                <label for="khoa">Khoa</label>
+                <select class="form-control" name="khoa">
+                    <option value="">Tất cả</option>
+                    <?php
+                        while ($row = mysqli_fetch_assoc($data[1])) {
+                            $selected = ($row['tenKhoa'] == $data[0][0]['khoa']) ? 'selected="selected"' : '';
+                            echo '<option value="'.$row['tenKhoa'].'" '.$selected.'>'.$row['tenKhoa'].'</option>';
+                        }
+                    ?>
+                </select>
             </div>
             <div class="form-outline mt-3" data-mdb-input-init>
-                <input name="khoa" type="text" class="form-control form-control-lg" value="<?php echo isset($data[0]['khoa']) ? $data[0]['khoa'] : ''; ?>">
-                <label class="form-label">Khoa</label>
-            </div>
-            <div class="form-outline mt-3" data-mdb-input-init>
-                <input name="email" type="text" class="form-control form-control-lg" value="<?php echo isset($data[0]['email']) ? $data[0]['email'] : ''; ?>">
+                <input name="email" type="text" class="form-control form-control-lg" value="<?php echo isset($data[0][0]['email']) ? $data[0][0]['email'] : ''; ?>">
                 <label class="form-label">Email</label>
             </div>
 
             <div class="form-outline mt-3" data-mdb-input-init>
-                <input name="ngayBatDau" type="date" class="form-control form-control-lg" value="<?php echo isset($data[0]['ngayBatDau']) ? $data[0]['ngayBatDau'] : ''; ?>">
+                <input name="ngayBatDau" type="date" class="form-control form-control-lg" value="<?php echo isset($data[0][0]['ngayBatDau']) ? $data[0][0]['ngayBatDau'] : ''; ?>">
                 <label class="form-label">Ngày bắt đầu</label>
             </div>
             <div class="form-outline mt-3" data-mdb-input-init>
-                <input name="ngayKetThuc" type="date" class="form-control form-control-lg" value="<?php echo isset($data[0]['ngayKetThuc']) ? $data[0]['ngayKetThuc'] : ''; ?>">
+                <input name="ngayKetThuc" type="date" class="form-control form-control-lg" value="<?php echo isset($data[0][0]['ngayKetThuc']) ? $data[0][0]['ngayKetThuc'] : ''; ?>">
                 <label class="form-label">Ngày kết thúc</label>
             </div>
             
@@ -175,11 +193,24 @@
     </div>
   </div>
 </div>
+
 <?php
     if (isset($data) && is_array($data) && count($data) > 0) {
         echo '
         <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Sửa</button>
         ';
+        echo "
+        <a href='?route=delete_employee&paramMHS" . urlencode($_GET["paramMHS"]) . "'>
+            <button class='btn btn-danger'>Xóa</button>
+        </a>";
+        echo "
+        <a href='?route=create_bonus&paramMNV=" . urlencode($data[0][0]['maNhanVien']) . "'>
+            <button class='btn btn-primary'>Khen thưởng</button>
+        </a>";
+        echo "
+        <a href='?route=create_penalty&paramMNV=" . urlencode($data[0][0]['maNhanVien']) . "'>
+            <button class='btn btn-primary'>Kỷ luật</button>
+        </a>";
     } else {
         echo "
         <a href='?route=create_employee&paramMHS=" . urlencode($_GET["paramMHS"]) . "'>
@@ -193,5 +224,9 @@
         require_once('./Controllers/ProfileController.php');
         $controller = new ProfileController();
         $controller->handleChangeEmployee();
+    } else if (isset($_POST['delete_employee'])) {
+        require_once('./Controllers/ProfileController.php');
+        $controller = new ProfileController();
+        $controller->handleDeleteEmployee();
     }
 ?>

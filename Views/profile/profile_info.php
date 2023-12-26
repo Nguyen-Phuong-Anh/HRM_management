@@ -350,11 +350,16 @@
 </div>
 <div class="mb-3">
     <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Sửa</button>
+    <button class="btn btn-danger" type="submit" name="delete_profile">Xóa</button>
 </div>
 <?php
     if(isset($_POST['saveChange'])) {
         require_once('./Controllers/ProfileController.php');
         $controller = new ProfileController();
         $controller->handleChangeProfile();
+    } else if(isset($_POST['delete_profile'])) {
+        require_once('./Controllers/ProfileController.php');
+        $controller = new ProfileController();
+        $controller->handleDeleteProfile();
     }
 ?>

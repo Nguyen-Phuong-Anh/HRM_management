@@ -49,7 +49,9 @@
             require_once('./Models/ProfileModel.php');
             $model = new ProfileModel(); 
             $result = $model->getEmployee();
-            return $result;
+            $khoa = $model->getKhoa();
+            $phongban = $model->getPhongBan();
+            return [$result, $khoa, $phongban];
         }
 
         public function handleChangeEmployee() {
@@ -62,6 +64,18 @@
             require_once('./Models/ProfileModel.php');
             $model = new ProfileModel(); 
             $model->createEmployee();  
+        }
+
+        public function handleDeleteEmployee() {
+            require_once('./Models/ProfileModel.php');
+            $model = new ProfileModel(); 
+            $model->deleteEmployee();
+        }
+
+        public function handleDeleteProfile() {
+            require_once('./Models/ProfileModel.php');
+            $model = new ProfileModel(); 
+            
         }
     }
 ?>

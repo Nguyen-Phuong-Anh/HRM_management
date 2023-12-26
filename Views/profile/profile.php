@@ -131,7 +131,7 @@ $(document).ready(function(){
         <div class="table-title">
             <div class="row">
                 <div class="col-sm-4">
-                    <h2>Bảng nhân viên</h2>
+                    <h2>Bảng hồ sơ</h2>
                 </div>
                 <div class="col-sm-8" style="display: flex; justify-content: end;">						
                     <form action="" method="post">

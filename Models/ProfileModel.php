@@ -82,22 +82,86 @@
             return $array;
         }
 
-        
-
         public function getSearchNV($tenNV, $khoa, $phongBan) {
             require('./Config/DBConn.php');
             $searchtenNV = "%{$tenNV}%";
 
             $stmt = mysqli_stmt_init($conn);
-            if((!empty($khoa) && empty($phongBan)) || (!empty($phongBan) && empty($khoa))) {
-                $sql = "SELECT maNhanVien, maHoSo FROM nhanvien WHERE khoa= ? OR phongBan= ?;";
+            if((!empty($khoa) && empty($phongBan))) {
+                $sql = "SELECT maNhanVien, maHoSo FROM nhanvien WHERE khoa= ?;";
     
                 if(!mysqli_stmt_prepare($stmt, $sql)) { 
                     header("Location: ./");
                     exit();
                 }
     
-                mysqli_stmt_bind_param($stmt, "ss", $khoa, $phongBan);
+                mysqli_stmt_bind_param($stmt, "s", $khoa);
+                mysqli_stmt_execute($stmt);
+                
+                $resultData = mysqli_stmt_get_result($stmt);
+                $rows = array();
+                while ($row = mysqli_fetch_assoc($resultData)) {
+                    $rows[] = $row;
+                }
+                
+                if(empty($tenNV)) {
+                    $sql1 = "SELECT * FROM thongtincoban WHERE maHoSo= ?;";
+                    if(!mysqli_stmt_prepare($stmt, $sql1)) { 
+                        header("Location: ./");
+                        exit();
+                    }
+                    
+                    $array = array();
+                    foreach($rows as $row) {
+                        mysqli_stmt_bind_param($stmt, "s", $row['maHoSo']);
+                        mysqli_stmt_execute($stmt);
+                        
+                        $data1 = mysqli_stmt_get_result($stmt);
+                        if($data1) {
+                            while($row1 = mysqli_fetch_assoc($data1)) {
+                                $row1['maNhanVien'] = $row['maNhanVien'];
+                                $array[] = $row1;
+                            }
+                        }
+                    }
+                    mysqli_stmt_close($stmt);
+                    $conn->close();
+        
+                    return $array;
+                } else {
+                    $sql1 = "SELECT * FROM thongtincoban WHERE maHoSo= ? AND hoTen LIKE ?;";
+                    if(!mysqli_stmt_prepare($stmt, $sql1)) { 
+                        header("Location: ./");
+                        exit();
+                    }
+                    
+                    $array = array();
+                    foreach($rows as $row) {
+                        mysqli_stmt_bind_param($stmt, "ss", $row['maHoSo'], $searchtenNV);
+                        mysqli_stmt_execute($stmt);
+                        
+                        $data1 = mysqli_stmt_get_result($stmt);
+                        if($data1) {
+                            while($row1 = mysqli_fetch_assoc($data1)) {
+                                $row1['maNhanVien'] = $row['maNhanVien'];
+                                $array[] = $row1;
+                            }
+                        }
+                    }
+                    mysqli_stmt_close($stmt);
+                    $conn->close();
+        
+                    return $array;
+                }
+            } else if((!empty($phongBan) && empty($khoa))) {
+                $sql = "SELECT maNhanVien, maHoSo FROM nhanvien WHERE phongBan= ?;";
+    
+                if(!mysqli_stmt_prepare($stmt, $sql)) { 
+                    header("Location: ./");
+                    exit();
+                }
+    
+                mysqli_stmt_bind_param($stmt, "s", $phongBan);
                 mysqli_stmt_execute($stmt);
                 
                 $resultData = mysqli_stmt_get_result($stmt);
@@ -479,12 +543,11 @@
             mysqli_stmt_execute($stmt);
 
             $resultData = mysqli_stmt_get_result($stmt); 
-            $arr = array();
+            $array = array();
             while ($row = mysqli_fetch_assoc($resultData)) {
-                $arr[] = $row;
+                $array[] = $row;
             }
-
-            return $arr;
+            return $array;
         }
 
         public function saveChangeEmployee() {
@@ -567,6 +630,73 @@
             } else {
                 echo '<script>alert("Failed to create employee")</script>';
             }
+            mysqli_stmt_close($stmt);
+            $conn->close();
+        }
+
+        public function deleteEmployee() {
+            $maHS = $_GET['paramMHS'];
+            require('./Config/DBConn.php');
+
+            $sql = "DELETE FROM nhanvien WHERE maHoSo = ?";
+            $stmt = mysqli_stmt_init($conn);
+
+            if(!mysqli_stmt_prepare($stmt, $sql)) { 
+                header("Location: ./");
+                exit();
+            }
+            
+            $stmt->bind_param("s", $maHS);
+            
+            if(mysqli_stmt_execute($stmt)) {
+                echo '<script>alert("Successfully delete employee")</script>';
+                echo "<script>
+                window.location = 'http://localhost/HRM_management/?route=profile';
+                </script>";
+            } else {
+                echo '<script>alert("Failed to delete employee")</script>';
+            }
+
+            mysqli_stmt_close($stmt);
+            $conn->close();
+        }
+
+        public function deleteProfile() {
+            $maHS = $_GET['paramMHS'];
+            require('./Config/DBConn.php');
+
+            $sql = "DELETE FROM soyeulilich WHERE maHoSo = ?";
+            $stmt = mysqli_stmt_init($conn);
+
+            if(!mysqli_stmt_prepare($stmt, $sql)) { 
+                header("Location: ./");
+                exit();
+            }
+            
+            $stmt->bind_param("s", $maHS);
+            
+            if(mysqli_stmt_execute($stmt)) {
+                $sql1 = "DELETE FROM thongtincoban WHERE maHoSo = ?";
+
+                if(!mysqli_stmt_prepare($stmt, $sql1)) { 
+                    header("Location: ./");
+                    exit();
+                }
+                
+                $stmt->bind_param("s", $maHS);
+                
+                if(mysqli_stmt_execute($stmt)) {
+                    echo '<script>alert("Successfully delete employee")</script>';
+                    echo "<script>
+                    window.location = 'http://localhost/HRM_management/?route=profile';
+                    </script>";
+                } else {
+                    echo '<script>alert("Failed to delete employee")</script>';   
+                }
+            } else {
+                echo '<script>alert("Failed to delete employee")</script>';
+            }
+
             mysqli_stmt_close($stmt);
             $conn->close();
         }
