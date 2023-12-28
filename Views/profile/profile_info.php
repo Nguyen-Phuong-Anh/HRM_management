@@ -354,6 +354,7 @@
 </div>
 <?php
     if(isset($_POST['saveChange'])) {
+        echo $_POST['trinhDoVanHoa'];
         require_once('./Controllers/ProfileController.php');
         $controller = new ProfileController();
         $controller->handleChangeProfile();

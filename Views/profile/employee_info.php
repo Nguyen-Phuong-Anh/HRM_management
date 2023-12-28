@@ -36,90 +36,115 @@
     }
 </style>
 
-<div class="mt-4 mb-4">
-    <h1>Thông tin nhân viên</h1>
-    <h5 class="fst-italic mb-0"><?php echo isset($data[0][0]['maHoSo']) ? 'Mã hồ sơ: ' . $data[0][0]['maHoSo'] : 'Chưa có thông tin về nhân viên'; ?></h5>
-
-    <table class="tb mt-5 mb-3">
-        <thead>
-            <th></th>
-            <th></th>
-        </thead>
-
+<div class="d-flex">
+    <div style="width: 200px;" class="me-5 mt-4 list-group list-group-light">
+        <a href="#" class="list-group-item list-group-item-action px-3      border-0 active" aria-current="true">Thông tin nhân viên
+        </a>
         <?php
             if (isset($data) && is_array($data) && count($data) > 0) {
-                echo "
-                    <tbody>
-                        <tr class='textbox'>
-                            <td>
-                                <p>Mã nhân viên</p> 
-                            </td>
-                            <td>
-                                <span>" . (isset($data[0][0]['maNhanVien']) ? $data[0][0]['maNhanVien'] : '') . "</span>
-                            </td>
-                        </tr>
-                        <tr class='textbox'>
-                            <td>
-                                <p>Bằng cấp</p> 
-                            </td>
-                            <td>
-                                <span>" . (isset($data[0][0]['bangCap']) ? $data[0][0]['bangCap'] : '') . "</span>
-                            </td>
-                        </tr>
-                        <tr class='textbox'>
-                            <td>
-                                <p>Chức vụ</p> 
-                            </td>
-                            <td>
-                                <span>" . (isset($data[0][0]['chucVu']) ? $data[0][0]['chucVu'] : '') . "</span>
-                            </td>
-                        </tr>
-                        <tr class='textbox'>
-                            <td>
-                                <p>Phòng ban</p> 
-                            </td>
-                            <td>
-                                <span>" . (isset($data[0][0]['phongBan']) ? $data[0][0]['phongBan'] : '') . "</span>
-                            </td>
-                        </tr>
-                        <tr class='textbox'>
-                            <td>
-                                <p>Khoa</p> 
-                            </td>
-                            <td>
-                                <span>" . (isset($data[0][0]['khoa']) ? $data[0][0]['khoa'] : '') . "</span>
-                            </td>
-                        </tr>
-                        <tr class='textbox'>
-                            <td>
-                                <p>Email</p> 
-                            </td>
-                            <td>
-                                <span>" . (isset($data[0][0]['email']) ? $data[0][0]['email'] : '') . "</span>
-                            </td>
-                        </tr>
-                        <tr class='textbox'>
-                            <td>
-                                <p>Ngày bắt đầu</p> 
-                            </td>
-                            <td>
-                                <span>" . (isset($data[0][0]['ngayBatDau']) ? $data[0][0]['ngayBatDau'] : '') . "</span>
-                            </td>
-                        </tr>
-                        <tr class='textbox'>
-                            <td>
-                                <p>Ngày kết thúc</p> 
-                            </td>
-                            <td>
-                                <span>" . (isset($data[0][0]['ngayKetThuc']) ? $data[0][0]['ngayKetThuc'] : '') . "</span>
-                            </td>
-                        </tr>
-                    </tbody>";
+                echo '<a href="?route=create_bonus&paramMNV=' . urlencode($data[0][0]['maNhanVien']) . '" class="list-group-item list-group-item-action px-3 border-0" aria-current="true">Khen thưởng</a>';
+                echo '<a href="?route=create_penalty&paramMNV=' . urlencode($data[0][0]['maNhanVien']) . '" class="list-group-item list-group-item-action px-3 border-0" aria-current="true">Kỷ luật</a>';
+                if($data[0][0]['phongBan'] === 'khoa và bộ môn') {
+                    echo '<a href="?route=create_schedule&paramMNV=' . urlencode($data[0][0]['maNhanVien']) . '&khoa=' . $data[0][0]['khoa'] . '" class="list-group-item list-group-item-action px-3 border-0" aria-current="true">Khối lượng giảng dạy</a>';
+                }
+                
             }
         ?>
-
-        
-    </table>
+  
+    </div>
+    <div class="mt-4 mb-4">
+        <h5 class="fst-italic mb-0"><?php echo isset($data[0][0]['maHoSo']) ? 'Mã hồ sơ: ' . $data[0][0]['maHoSo'] : 'Chưa có thông tin về nhân viên'; ?></h5>
+    
+        <table class="tb mt-5 mb-3">
+            <thead>
+                <th></th>
+                <th></th>
+            </thead>
+    
+            <?php
+                if (isset($data) && is_array($data) && count($data) > 0) {
+                    echo "
+                        <tbody>
+                            <tr class='textbox'>
+                                <td>
+                                    <p>Mã nhân viên</p>
+                                </td>
+                                <td>
+                                    <span>" . (isset($data[0][0]['maNhanVien']) ? $data[0][0]['maNhanVien'] : '') . "</span>
+                                </td>
+                            </tr>
+                            <tr class='textbox'>
+                                <td>
+                                    <p>Bằng cấp</p>
+                                </td>
+                                <td>
+                                    <span>" . (isset($data[0][0]['bangCap']) ? $data[0][0]['bangCap'] : '') . "</span>
+                                </td>
+                            </tr>
+                            <tr class='textbox'>
+                                <td>
+                                    <p>Chức vụ</p>
+                                </td>
+                                <td>
+                                    <span>" . (isset($data[0][0]['chucVu']) ? $data[0][0]['chucVu'] : '') . "</span>
+                                </td>
+                            </tr>
+                            <tr class='textbox'>
+                                <td>
+                                    <p>Phòng ban</p>
+                                </td>
+                                <td>
+                                    <span>" . (isset($data[0][0]['phongBan']) ? $data[0][0]['phongBan'] : '') . "</span>
+                                </td>
+                            </tr>
+                            <tr class='textbox'>
+                                <td>
+                                    <p>Khoa</p>
+                                </td>
+                                <td>
+                                    <span>" . (isset($data[0][0]['khoa']) ? $data[0][0]['khoa'] : '') . "</span>
+                                </td>
+                            </tr>
+                            <tr class='textbox'>
+                                <td>
+                                    <p>Email</p>
+                                </td>
+                                <td>
+                                    <span>" . (isset($data[0][0]['email']) ? $data[0][0]['email'] : '') . "</span>
+                                </td>
+                            </tr>
+                            <tr class='textbox'>
+                                <td>
+                                    <p>Ngày bắt đầu</p>
+                                </td>
+                                <td>
+                                    <span>" . (isset($data[0][0]['ngayBatDau']) ? $data[0][0]['ngayBatDau'] : '') . "</span>
+                                </td>
+                            </tr>
+                            <tr class='textbox'>
+                                <td>
+                                    <p>Ngày kết thúc</p>
+                                </td>
+                                <td>
+                                    <span>" . (isset($data[0][0]['ngayKetThuc']) ? $data[0][0]['ngayKetThuc'] : '') . "</span>
+                                </td>
+                            </tr>
+                        </tbody>";
+                }
+            ?>
+        </table>
+        <?php
+            if (isset($data) && is_array($data) && count($data) > 0) {
+                echo '
+                <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Sửa</button>
+                ';
+                echo "
+                <a href='?route=delete_employee&paramMHS" . urlencode($_GET["paramMHS"]) . "'>
+                    <button class='btn btn-danger'>Xóa</button>
+                </a>";
+            }
+        ?>
+    </div>
 </div>
 
 <!-- modal -->
@@ -134,7 +159,7 @@
         <form action="" method="post">
             <div class="modal-body">
             <div class="form-outline" data-mdb-input-init>
-                <input name="maNhanVien" type="text" class="form-control form-control-lg" value="<?php echo isset($data[0][0]['maNhanVien']) ? $data[0][0]['maNhanVien'] : ''; ?>">
+                <input readonly name="maNhanVien" type="text" class="form-control form-control-lg" value="<?php echo isset($data[0][0]['maNhanVien']) ? $data[0][0]['maNhanVien'] : ''; ?>">
                 <label class="form-label">Mã nhân viên</label>
             </div>
             <div class="form-outline mt-3" data-mdb-input-init>
@@ -195,23 +220,7 @@
 </div>
 
 <?php
-    if (isset($data) && is_array($data) && count($data) > 0) {
-        echo '
-        <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Sửa</button>
-        ';
-        echo "
-        <a href='?route=delete_employee&paramMHS" . urlencode($_GET["paramMHS"]) . "'>
-            <button class='btn btn-danger'>Xóa</button>
-        </a>";
-        echo "
-        <a href='?route=create_bonus&paramMNV=" . urlencode($data[0][0]['maNhanVien']) . "'>
-            <button class='btn btn-primary'>Khen thưởng</button>
-        </a>";
-        echo "
-        <a href='?route=create_penalty&paramMNV=" . urlencode($data[0][0]['maNhanVien']) . "'>
-            <button class='btn btn-primary'>Kỷ luật</button>
-        </a>";
-    } else {
+    if (!isset($data) && !is_array($data) && !count($data) > 0) {
         echo "
         <a href='?route=create_employee&paramMHS=" . urlencode($_GET["paramMHS"]) . "'>
             <button class='btn btn-primary'>Thêm nhân viên</button>

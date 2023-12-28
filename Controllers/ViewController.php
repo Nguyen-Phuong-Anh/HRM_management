@@ -47,5 +47,21 @@
         public function showChangePenalty() {
             require_once('./Views/penalty/change_penalty.php');
         }
+
+        public function showSchedule() {
+            require_once('./Views/schedule/schedule.php');
+        }
+
+        public function showGetSchedule() {
+            require_once('./Views/schedule/getSchedule.php');
+        }
+
+        public function showCreateSchedule() {
+            require_once('./Views/schedule/create_schedule.php');
+        }
+
+        public function showChangeSchedule() {
+            require_once('./Views/schedule/change_schedule.php');
+        }
     }
 ?>

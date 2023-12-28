@@ -403,7 +403,10 @@
             require('./Config/DBConn.php');
             
             $maHoSo = $_GET['paramMHS'];
-            $sql = "SELECT * FROM thongtincoban WHERE maHoSo= ?;";
+            $sql = "SELECT TC.*, SL.*
+            FROM thongtincoban AS TC
+            LEFT JOIN soyeulilich AS SL ON TC.maHoSo = SL.maHoSo
+            WHERE TC.maHoSo = ?";
             $stmt = mysqli_stmt_init($conn);
 
             if(!mysqli_stmt_prepare($stmt, $sql)) { 
@@ -413,33 +416,18 @@
 
             $stmt->bind_param("s", $maHoSo);
             $array = array();
+
+            if (mysqli_stmt_execute($stmt)) {
+                $resultData = mysqli_stmt_get_result($stmt);
             
-            if(mysqli_stmt_execute($stmt)) {
-                $resultData = mysqli_stmt_get_result($stmt); 
-    
                 while ($row = mysqli_fetch_assoc($resultData)) {
                     $array[] = $row;
                 }
-
-                $sql1 = "SELECT * FROM soyeulilich WHERE maHoSo= ?;";
-
-                if(!mysqli_stmt_prepare($stmt, $sql1)) { 
-                    header("Location: ./");
-                    exit();
-                }
-                $stmt->bind_param("s", $maHoSo);
-                if(mysqli_stmt_execute($stmt)) {
-                    $resultData = mysqli_stmt_get_result($stmt); 
-                    while ($row = mysqli_fetch_assoc($resultData)) {
-                        $array[] = $row;
-                    }
-                }
-
-                mysqli_stmt_close($stmt);
-                $conn->close();
-                
-                return $array;
             }
+            
+            mysqli_stmt_close($stmt);
+            $conn->close();
+            
             return $array;
         }
 
@@ -554,7 +542,6 @@
             require('./Config/DBConn.php');
             $maHoSo = $_GET['paramMHS'];
 
-            $maNhanVien = $_POST['maNhanVien'];
             $bangCap = $_POST['bangCap'];
             $chucVu = $_POST['chucVu'];
             $phongBan = $_POST['phongBan'];
@@ -564,7 +551,6 @@
             $ngayKetThuc = $_POST['ngayKetThuc'];
 
             $sql = "UPDATE nhanvien SET 
-            maNhanVien = ?, 
             bangCap = ?, 
             chucVu = ?, 
             phongBan = ?, 
@@ -581,7 +567,7 @@
                 exit();
             }
 
-            $stmt->bind_param("sssssssss", $maNhanVien, $bangCap, $chucVu, $phongBan, $khoa, $email, $ngayBatDau, $ngayKetThuc, $maHoSo);
+            $stmt->bind_param("ssssssss", $bangCap, $chucVu, $phongBan, $khoa, $email, $ngayBatDau, $ngayKetThuc, $maHoSo);
 
             if(mysqli_stmt_execute($stmt)) {
                 echo '<script>alert("Successfully update employee")</script>';

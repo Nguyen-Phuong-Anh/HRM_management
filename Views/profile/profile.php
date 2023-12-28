@@ -144,7 +144,7 @@ $(document).ready(function(){
 							</span>
 						<span>Refresh</span></button>
 					</form>
-					<a href=".?route=create_employee">
+					<a href=".?route=create_prf">
 						<button class="btn btn-primary">
 							<span class="pe-2 pb-1">
 								<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-plus-square-dotted" viewBox="0 0 16 16">
@@ -168,32 +168,32 @@ $(document).ready(function(){
 								</svg>
 							</button>
 						</div>
-							<div class="filter-group">
-								<label>Tên nhân viên</label>
-								<input name="tenNV" type="text" class="form-control">
+						<div class="filter-group">
+							<label>Tên nhân viên</label>
+							<input name="tenNV" type="text" class="form-control">
+						</div>
+						<div class="filter-group">
+							<label>Khoa</label>
+							<select class="form-control" name="khoa">
+								<option value="">Tất cả</option>
+								<?php
+									while ($row = mysqli_fetch_assoc($result[0])) {
+										echo '<option value="'.$row['tenKhoa'].'">'.$row['tenKhoa'].'</option>';
+									}
+								?>
+							</select>
 							</div>
 							<div class="filter-group">
-								<label>Khoa</label>
-								<select class="form-control" name="khoa">
-									<option value="">Tất cả</option>
+								<label>Phòng ban</label>
+								<select class="form-control" name="phongBan">
+								<option value="">Tất cả</option>
 									<?php
-										while ($row = mysqli_fetch_assoc($result[0])) {
-											echo '<option value="'.$row['tenKhoa'].'">'.$row['tenKhoa'].'</option>';
+										while ($row = mysqli_fetch_assoc($result[1])) {
+											echo '<option value="'.$row['tenPB'].'">'.$row['tenPB'].'</option>';
 										}
-									?>
+									?>					
 								</select>
-								</div>
-								<div class="filter-group">
-									<label>Phòng ban</label>
-									<select class="form-control" name="phongBan">
-									<option value="">Tất cả</option>
-										<?php
-											while ($row = mysqli_fetch_assoc($result[1])) {
-												echo '<option value="'.$row['tenPB'].'">'.$row['tenPB'].'</option>';
-											}
-										?>					
-									</select>
-								</div>
+							</div>
 					</form>
                 </div>
             </div>

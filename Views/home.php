@@ -126,7 +126,7 @@
       
       <li>
         <li class='mb-1'>
-            <a href='.?route=home'>
+            <a href='.?route=schedule'>
               <button class='btn btn-toggle text-white align-items-center rounded'>
               <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-wallet2" viewBox="0 0 20 20">
                 <path d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499L12.136.326zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484L5.562 3zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z"/>
@@ -261,13 +261,35 @@
         $controller->showCreatePenalty();
         break;
       
-        case 'change_penalty':
-        require_once('./Controllers/ViewController.php');
-        $controller = new ViewController();
-        $controller->showChangePenalty();
-        break;
-
+      case 'change_penalty':
+      require_once('./Controllers/ViewController.php');
+      $controller = new ViewController();
+      $controller->showChangePenalty();
+      break;
       
+      case 'schedule':
+      require_once('./Controllers/ViewController.php');
+      $controller = new ViewController();
+      $controller->showSchedule();
+      break;
+
+      case 'getSchedule':
+      require_once('./Controllers/ViewController.php');
+      $controller = new ViewController();
+      $controller->showGetSchedule();
+      break;
+      
+      case 'create_schedule':
+      require_once('./Controllers/ViewController.php');
+      $controller = new ViewController();
+      $controller->showCreateSchedule();
+      break;
+      
+      case 'change_schedule':
+      require_once('./Controllers/ViewController.php');
+      $controller = new ViewController();
+      $controller->showChangeSchedule();
+      break;
 
     }
       ?>
