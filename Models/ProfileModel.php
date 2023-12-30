@@ -333,6 +333,8 @@
 
         public function createProfile() {
             require('./Config/DBConn.php');
+            require_once('./Hooks/ValidationHooks.php');
+
             $maHS = '';
             for ($i = 0; $i < 7; $i++) {
                 $maHS .= mt_rand(0, 9); 
@@ -340,14 +342,35 @@
             
             $hoTen = isset($_POST['hoTen']) ? $_POST['hoTen'] : '';
             $gioiTinh = isset($_POST['gioiTinh']) ? $_POST['gioiTinh'] : '';
+            if($gioiTinh === '') {
+                echo '<script>alert("Cần cung cấp giới tính!")</script>';
+                echo "<script>
+                window.location = 'http://localhost/HRM_management/?route=create_prf';
+                </script>";
+                exit();
+            } 
             $ngaySinh = isset($_POST['ngaySinh']) ? $_POST['ngaySinh'] : '';
             $queQuan = isset($_POST['queQuan']) ? $_POST['queQuan'] : '';
             $hoKhauThuongTru = isset($_POST['hoKhauThuongTru']) ? $_POST['hoKhauThuongTru'] : '';
             $diaChi = isset($_POST['diaChi']) ? $_POST['diaChi'] : '';
             $dienThoai = isset($_POST['dienThoai']) ? $_POST['dienThoai'] : '';
+            if(!phoneValidation($dienThoai)) {
+                echo '<script>alert("Nhập chính xác số điện thoại!")</script>';
+                echo "<script>
+                window.location = 'http://localhost/HRM_management/?route=create_prf';
+                </script>";
+                exit();
+            }
             $danToc = isset($_POST['danToc']) ? $_POST['danToc'] : '';
             $tonGiao = isset($_POST['tonGiao']) ? $_POST['tonGiao'] : '';
             $CCCD = isset($_POST['CCCD']) ? $_POST['CCCD'] : '';
+            if(!idCardValidation($CCCD)) {
+                echo '<script>alert("Nhập chính xác số căn cước!")</script>';
+                echo "<script>
+                window.location = 'http://localhost/HRM_management/?route=create_prf';
+                </script>";
+                exit();
+            }
             $CCCDNgayCap = isset($_POST['CCCDNgayCap']) ? $_POST['CCCDNgayCap'] : '';
             $CCCDNoiCap = isset($_POST['CCCDNoiCap']) ? $_POST['CCCDNoiCap'] : '';
             $trinhDoVanHoa = isset($_POST['trinhDoVanHoa']) ? $_POST['trinhDoVanHoa'] : '';
@@ -672,15 +695,15 @@
                 $stmt->bind_param("s", $maHS);
                 
                 if(mysqli_stmt_execute($stmt)) {
-                    echo '<script>alert("Successfully delete employee")</script>';
+                    echo '<script>alert("Successfully delete profile")</script>';
                     echo "<script>
                     window.location = 'http://localhost/HRM_management/?route=profile';
                     </script>";
                 } else {
-                    echo '<script>alert("Failed to delete employee")</script>';   
+                    echo '<script>alert("Failed to delete profile")</script>';   
                 }
             } else {
-                echo '<script>alert("Failed to delete employee")</script>';
+                echo '<script>alert("Failed to delete profile")</script>';
             }
 
             mysqli_stmt_close($stmt);

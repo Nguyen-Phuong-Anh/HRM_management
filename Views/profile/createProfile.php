@@ -1,7 +1,7 @@
 <form action="" method="post">
   <h2 class="mb-4 mt-3">Tạo hồ sơ</h2>
   <div class="form-outline" data-mdb-input-init>
-    <input name="hoTen" type="text" class="form-control form-control-lg" />
+    <input required name="hoTen" type="text" class="form-control form-control-lg" />
     <label class="form-label">Họ và tên</label>
   </div>
 
@@ -22,31 +22,31 @@
   </div>
 
   <div class="form-outline mt-3" data-mdb-input-init>
-    <input name="ngaySinh" type="date" class="form-control form-control-lg" />
+    <input required name="ngaySinh" type="date" class="form-control form-control-lg" />
     <label class="form-label">Ngày sinh</label>
   </div>
 
   <div class="form-outline mt-4" data-mdb-input-init>
-    <input name="queQuan" type="text" class="form-control form-control-lg" />
+    <input required name="queQuan" type="text" class="form-control form-control-lg" />
     <label class="form-label">Nguyên quán</label>
   </div>
   <div class="form-outline mt-4" data-mdb-input-init>
-    <input name="hoKhauThuongTru" type="text" class="form-control form-control-lg" />
+    <input required name="hoKhauThuongTru" type="text" class="form-control form-control-lg" />
     <label class="form-label">Nơi đăng ký hộ khẩu thường trú</label>
   </div>
   <div class="form-outline mt-4" data-mdb-input-init>
-    <input name="diaChi" type="text" class="form-control form-control-lg" />
+    <input required name="diaChi" type="text" class="form-control form-control-lg" />
     <label class="form-label">Địa chỉ</label>
   </div>
 
   <div class="form-outline mt-4" data-mdb-input-init>
-    <input name="dienThoai" type="text" class="form-control form-control-lg" />
+    <input required name="dienThoai" type="text" class="form-control form-control-lg" />
     <label class="form-label">Điện thoại</label>
   </div>
 
   <div class="d-flex">
     <div class="form-outline mt-4" data-mdb-input-init>
-      <input name="danToc" type="text" class="form-control form-control-lg" />
+      <input required name="danToc" type="text" class="form-control form-control-lg" />
       <label class="form-label">Dân tộc</label>
     </div>
     <div class="form-outline mt-4 ms-3" data-mdb-input-init>
@@ -57,30 +57,30 @@
 
   <div class="d-flex">
     <div class="form-outline mt-4" data-mdb-input-init>
-      <input name="CCCD" type="text" class="form-control form-control-lg" />
+      <input required name="CCCD" type="text" class="form-control form-control-lg" />
       <label class="form-label">CCCD</label>
     </div>
     <div class="form-outline mt-4 ms-3" data-mdb-input-init>
-      <input name="CCCDNgayCap" type="date" class="form-control form-control-lg" />
+      <input required name="CCCDNgayCap" type="date" class="form-control form-control-lg" />
       <label class="form-label">Ngày cấp</label>
     </div>
     <div class="form-outline mt-4 ms-3" data-mdb-input-init>
-      <input name="CCCDNoiCap" type="text" class="form-control form-control-lg" />
+      <input required name="CCCDNoiCap" type="text" class="form-control form-control-lg" />
       <label class="form-label">Nơi cấp</label>
     </div>
   </div>
 
   <div class="form-outline mt-4" data-mdb-input-init>
-    <input name="trinhDoVanHoa" type="text" class="form-control form-control-lg" />
+    <input required name="trinhDoVanHoa" type="text" class="form-control form-control-lg" />
     <label class="form-label">Trình độ văn hóa</label>
   </div>
   <div class="d-flex">
     <div class="form-outline mt-4" data-mdb-input-init>
-      <input name="noiKetNapDoan" type="text" class="form-control form-control-lg" />
+      <input required name="noiKetNapDoan" type="text" class="form-control form-control-lg" />
       <label class="form-label">Nơi kết nạp đoàn</label>
     </div>
     <div class="form-outline mt-4 ms-3" data-mdb-input-init>
-      <input name="ngayKetNapDoan" type="date" class="form-control form-control-lg" />
+      <input required name="ngayKetNapDoan" type="date" class="form-control form-control-lg" />
       <label class="form-label">Ngày kết nạp đoàn</label>
     </div>
   </div>

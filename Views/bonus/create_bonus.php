@@ -6,23 +6,23 @@
   </div>
 
   <div class="form-outline mt-4" data-mdb-input-init>
-    <input name="tenDotKhenThuong" type="text" class="form-control form-control-lg" />
+    <input required name="tenDotKhenThuong" type="text" class="form-control form-control-lg" />
     <label class="form-label">Tên đợt khen thưởng</label>
   </div>
   <div class="form-outline mt-4" data-mdb-input-init>
-    <input name="soQuyetDinh" type="text" class="form-control form-control-lg" />
+    <input required name="soQuyetDinh" type="text" class="form-control form-control-lg" />
     <label class="form-label">Số quyết định khen thưởng</label>
   </div>
   <div class="form-outline mt-3" data-mdb-input-init>
-    <input name="ngayKhenThuong" type="date" class="form-control form-control-lg" />
+    <input required name="ngayKhenThuong" type="date" class="form-control form-control-lg" />
     <label class="form-label">Ngày khen thưởng</label>
   </div>
   <div class="form-outline mt-4" data-mdb-input-init>
-    <input name="loaiKhenThuong" type="text" class="form-control form-control-lg" />
+    <input required name="loaiKhenThuong" type="text" class="form-control form-control-lg" />
     <label class="form-label">Loại khen thưởng</label>
   </div>
   <div class="form-outline mt-4" data-mdb-input-init>
-    <input name="hinhThucKhenThuong" type="text" class="form-control form-control-lg" />
+    <input required name="hinhThucKhenThuong" type="text" class="form-control form-control-lg" />
     <label class="form-label">Hình thức khen thưởng</label>
   </div>
   <div class="d-flex mt-4">

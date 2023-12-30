@@ -63,5 +63,9 @@
         public function showChangeSchedule() {
             require_once('./Views/schedule/change_schedule.php');
         }
+
+        public function showContract() {
+            require_once('./Views/contract/contract.php');
+        }
     }
 ?>

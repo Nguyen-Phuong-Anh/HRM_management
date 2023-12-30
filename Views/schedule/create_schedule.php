@@ -12,17 +12,17 @@
     </div>
 
     <div class="form-outline mt-4" data-mdb-input-init>
-        <input name="soTiet" type="number" class="form-control form-control-lg" />
+        <input required name="soTiet" type="number" class="form-control form-control-lg" />
         <label class="form-label" >Số tiết giảng dạy/ tuần</label>
     </div>
 
     <div class="form-outline mt-4" data-mdb-input-init>
-        <input name="soTuanGiangDay" type="number" class="form-control form-control-lg" />
+        <input required name="soTuanGiangDay" type="number" class="form-control form-control-lg" />
         <label class="form-label" >Số tuần giảng dạy</label>
     </div>
 
     <div class="form-outline mt-3" data-mdb-input-init>
-        <input name="nhiemVu" type="text" class="form-control form-control-lg" />
+        <input required name="nhiemVu" type="text" class="form-control form-control-lg" />
         <label class="form-label">Nhiệm vụ</label>
     </div>
 

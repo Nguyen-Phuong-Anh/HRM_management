@@ -2,28 +2,28 @@
   <h2 class="mb-4 mt-3">Tạo nhân viên</h2>
   <div class="modal-body">
         <div class="form-outline mt-3" data-mdb-input-init>
-            <input name="bangCap" type="text" class="form-control form-control-lg">
+            <input required name="bangCap" type="text" class="form-control form-control-lg">
             <label class="form-label">Bằng cấp</label>
         </div>
         <div class="form-outline mt-3" data-mdb-input-init>
-            <input name="chucVu" type="text" class="form-control form-control-lg">
+            <input required name="chucVu" type="text" class="form-control form-control-lg">
             <label class="form-label">Chức vụ</label>
         </div>
         <div class="form-outline mt-3" data-mdb-input-init>
-            <input name="phongBan" type="text" class="form-control form-control-lg">
+            <input required name="phongBan" type="text" class="form-control form-control-lg">
             <label class="form-label">Phòng ban</label>
         </div>
         <div class="form-outline mt-3" data-mdb-input-init>
-            <input name="khoa" type="text" class="form-control form-control-lg">
+            <input required name="khoa" type="text" class="form-control form-control-lg">
             <label class="form-label">Khoa</label>
         </div>
         <div class="form-outline mt-3" data-mdb-input-init>
-            <input name="email" type="text" class="form-control form-control-lg">
+            <input name="email" type="email" class="form-control form-control-lg">
             <label class="form-label">Email</label>
         </div>
 
         <div class="form-outline mt-3" data-mdb-input-init>
-            <input name="ngayBatDau" type="date" class="form-control form-control-lg">
+            <input required name="ngayBatDau" type="date" class="form-control form-control-lg">
             <label class="form-label">Ngày bắt đầu</label>
         </div>
         <div class="form-outline mt-3" data-mdb-input-init>

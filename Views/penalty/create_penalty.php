@@ -6,15 +6,15 @@
   </div>
 
   <div class="form-outline mt-4" data-mdb-input-init>
-    <input name="loaiHinhKyLuat" type="text" class="form-control form-control-lg" />
+    <input required name="loaiHinhKyLuat" type="text" class="form-control form-control-lg" />
     <label class="form-label">Loại hình kỷ luật</label>
   </div>
   <div class="form-outline mt-3" data-mdb-input-init>
-    <input name="ngayKyLuat" type="date" class="form-control form-control-lg" />
+    <input required name="ngayKyLuat" type="date" class="form-control form-control-lg" />
     <label class="form-label">Ngày kỷ luật</label>
   </div>
   <div class="form-outline mt-4" data-mdb-input-init>
-    <input name="hinhThucKyLuat" type="text" class="form-control form-control-lg" />
+    <input required name="hinhThucKyLuat" type="text" class="form-control form-control-lg" />
     <label class="form-label">Hình thức kỷ luật</label>
   </div>
   <div class="d-flex mt-4">

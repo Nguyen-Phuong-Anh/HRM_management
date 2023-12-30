@@ -219,6 +219,13 @@
             $ngayKyLuat = $_POST['ngayKyLuat'];
             $hinhThucKyLuat = $_POST['hinhThucKyLuat'];
             $trangThai = $_POST['trangThai'];
+            if($trangThai === '') {
+                echo '<script>alert("Cần cung cấp trạng thái!")</script>';
+                echo "<script>
+                window.location = 'http://localhost/HRM_management/?route=profile';
+                </script>";
+                exit();
+            }
 
             $sql = "INSERT INTO kyluat (maKyLuat, maNhanVien, loaiHinhKyLuat, ngayKyLuat, hinhThucKyLuat, trangThai) VALUES (?, ?, ?, ?, ?, ?)";
 

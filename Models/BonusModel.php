@@ -221,6 +221,13 @@
             $loaiKhenThuong = isset($_POST['loaiKhenThuong']) ? $_POST['loaiKhenThuong'] : '';
             $hinhThucKhenThuong = isset($_POST['hinhThucKhenThuong']) ? $_POST['hinhThucKhenThuong'] : '';
             $trangThai = isset($_POST['trangThai']) ? $_POST['trangThai'] : '';
+            if($trangThai === '') {
+                echo '<script>alert("Cần cung cấp trạng thái!")</script>';
+                echo "<script>
+                window.location = 'http://localhost/HRM_management/?route=profile';
+                </script>";
+                exit();
+            }
 
             $sql = "INSERT INTO khenthuong (maKhenThuong, maNhanVien, tenDotKhenThuong, soQuyetDinh, ngayKhenThuong, loaiKhenThuong, hinhThucKhenThuong, trangThai)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?)";

@@ -348,9 +348,9 @@
     </div>
   </div>
 </div>
-<div class="mb-3">
-    <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Sửa</button>
-    <button class="btn btn-danger" type="submit" name="delete_profile">Xóa</button>
+<div class="d-flex mb-3">
+    <button type="submit" class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Sửa</button>
+    <form action="" method="post"><button class="btn btn-danger ms-3" type="submit" name="delete_profile">Xóa</button></form>
 </div>
 <?php
     if(isset($_POST['saveChange'])) {

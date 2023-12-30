@@ -177,6 +177,14 @@
             $hocPhan = $_POST['hocPhan'];
             $gioGiangDay = $soTiet * $soTuanGiangDay;
 
+            if($hocKy === '' || $namHoc === '' || $hocPhan === '') {
+                echo '<script>alert("Điền đầy đủ thông tin")</script>';
+                echo "<script>
+                window.location = 'http://localhost/HRM_management/?route=schedule';
+                </script>";
+                exit();
+            }
+
             $sql = "INSERT INTO giangday (maGiangDay, maNhanVien,soTiet,  gioGiangDay, tuanGiangDay, nhiemVu, hocKy, namHoc, maHocPhan) 
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 

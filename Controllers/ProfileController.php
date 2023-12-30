@@ -75,7 +75,7 @@
         public function handleDeleteProfile() {
             require_once('./Models/ProfileModel.php');
             $model = new ProfileModel(); 
-            
+            $model->deleteProfile();
         }
     }
 ?>
