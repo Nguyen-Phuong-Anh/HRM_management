@@ -219,6 +219,7 @@ $(document).ready(function(){
 							return;
 						} else {
 							require_once("./Controllers/ProfileController.php");
+							require_once('./Hooks/ValidationHooks.php');
 							$controller = new ProfileController();
 							$result = $controller->handleSearchEmployee();
 							foreach($result as $row) {
@@ -226,7 +227,11 @@ $(document).ready(function(){
 								echo"<td class='table-cell'>".$index."</td>";
 								echo"<td class='table-cell'>".$row["maHoSo"]."</td>";
 								echo "<td class='table-cell'>" . (isset($row["maNhanVien"]) ? $row["maNhanVien"] : ' ') . "</td>";
-								echo '<td class="table-cell"><a href="?route=employee_info&paramMHS='.$row['maHoSo'].'">'.$row["hoTen"].'</a></td>';
+								if(checkNV($row['maHoSo'])) {
+									echo '<td class="table-cell"><a href="?route=employee_info&paramMHS='.$row['maHoSo'].'">'.$row["hoTen"].'</a></td>';
+								} else {
+									echo '<td class="table-cell"><a href="?route=create_employee">'.$row["hoTen"].'</a></td>';
+								}
 								echo"<td class='table-cell'>".$row["gioiTinh"]."</td>";
 								echo"<td class='table-cell'>".$row["ngaySinh"]."</td>";
 								echo"<td class='table-cell'>".$row["dienThoai"]."</td>";
@@ -238,13 +243,18 @@ $(document).ready(function(){
 					} else {
 						require_once('./Controllers/ProfileController.php');
 						$controller = new ProfileController();
-						$result = $controller->handleGetNV();	
+						$result = $controller->handleGetNV();
+						require_once('./Hooks/ValidationHooks.php');
 						foreach($result[0] as $row) {
 							echo '<tr>';
 							echo"<td class='table-cell'>".$index."</td>";
 							echo"<td class='table-cell'>".$row["maHoSo"]."</td>";
 							echo "<td class='table-cell'>" . (isset($row["maNhanVien"]) ? $row["maNhanVien"] : '- -') . "</td>";
-							echo '<td class="table-cell"><a href="?route=employee_info&paramMHS='.$row['maHoSo'].'">'.$row["hoTen"].'</a></td>';
+							if(checkNV($row['maHoSo'])) {
+								echo '<td class="table-cell"><a href="?route=employee_info&paramMHS='.$row['maHoSo'].'">'.$row["hoTen"].'</a></td>';
+							} else {
+								echo '<td class="table-cell"><a href="?route=create_employee">'.$row["hoTen"].'</a></td>';
+							}
 							echo"<td class='table-cell'>".$row["gioiTinh"]."</td>";
 							echo"<td class='table-cell'>".$row["ngaySinh"]."</td>";
 							echo"<td class='table-cell'>".$row["dienThoai"]."</td>";

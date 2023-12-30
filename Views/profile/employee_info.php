@@ -38,10 +38,10 @@
 
 <div class="d-flex">
     <div style="width: 200px;" class="me-5 mt-4 list-group list-group-light">
-        <a href="#" class="list-group-item list-group-item-action px-3      border-0 active" aria-current="true">Thông tin nhân viên
-        </a>
         <?php
             if (isset($data) && is_array($data) && count($data) > 0) {
+                echo '<a href="#" class="list-group-item list-group-item-action px-3 border-0 active" aria-current="true">Thông tin nhân viên
+                </a>';
                 echo '<a href="?route=create_bonus&paramMNV=' . urlencode($data[0][0]['maNhanVien']) . '" class="list-group-item list-group-item-action px-3 border-0" aria-current="true">Khen thưởng</a>';
                 echo '<a href="?route=create_penalty&paramMNV=' . urlencode($data[0][0]['maNhanVien']) . '" class="list-group-item list-group-item-action px-3 border-0" aria-current="true">Kỷ luật</a>';
                 if($data[0][0]['phongBan'] === 'khoa và bộ môn') {
@@ -50,12 +50,10 @@
                 
             }
         ?>
-  
     </div>
     <div class="mt-4 mb-4">
-        <h5 class="fst-italic mb-0"><?php echo isset($data[0][0]['maHoSo']) ? 'Mã hồ sơ: ' . $data[0][0]['maHoSo'] : 'Chưa có thông tin về nhân viên'; ?></h5>
-    
-        <table class="tb mt-5 mb-3">
+        <h5 class="fst-italic ms-2 mb-0"><?php echo isset($data[0][0]['maHoSo']) ? 'Mã hồ sơ: ' . $data[0][0]['maHoSo'] : ''; ?></h5>
+        <table class="tb mt-2 mb-3">
             <thead>
                 <th></th>
                 <th></th>

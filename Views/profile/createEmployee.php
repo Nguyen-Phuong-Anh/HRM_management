@@ -1,5 +1,5 @@
 <form action="" method="post">
-  <h2 class="mb-4 mt-3">Tạo nhân viên</h2>
+  <h2 class="mb-4 mt-5">Tạo nhân viên</h2>
   <div class="modal-body">
         <div class="form-outline mt-3" data-mdb-input-init>
             <input required name="bangCap" type="text" class="form-control form-control-lg">

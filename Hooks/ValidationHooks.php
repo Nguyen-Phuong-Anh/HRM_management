@@ -14,4 +14,28 @@
         }
         return true;
     }
+
+    function checkNV($maHS) {
+        require('./Config/DBConn.php');
+
+        $stmt = mysqli_stmt_init($conn);
+        $sql = "SELECT * FROM nhanvien WHERE maHoSo= ?;";
+        
+        if(!mysqli_stmt_prepare($stmt, $sql)) { 
+            header("Location: ./");
+            exit();
+        }
+
+        $stmt->bind_param("s", $maHS);
+        mysqli_stmt_execute($stmt);
+
+        $resultData = mysqli_stmt_get_result($stmt); 
+        $array = array();
+        while ($row = mysqli_fetch_assoc($resultData)) {
+            $array[] = $row;
+        }
+        if(isset($array[0]['maNhanVien'])) {
+            return true;
+        } else return false;
+    }
 ?>
