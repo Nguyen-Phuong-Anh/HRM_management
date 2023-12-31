@@ -51,10 +51,28 @@
     
     <div class="mt-3">
         <button class="btn btn-primary" type="submit" name="saveChange">Lưu</button>
-        <button class="btn btn-danger" type="submit" name="delete_schedule">Xóa</button>
+        <button type="button" class="btn btn-danger" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#exampleModal">
+            Xóa
+        </button>
     </div>
 </form>
-
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Xác nhận xóa</h5>
+        <button type="button" class="btn-close" data-mdb-ripple-init data-mdb-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">Bạn có muốn xóa thông tin giảng dạy này?</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-mdb-ripple-init data-mdb-dismiss="modal">Đóng</button>
+        <form action="" method="post">
+            <button class="btn btn-danger" type="submit" name="delete_schedule">Xóa</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 <?php
     if(isset($_POST['saveChange'])) {
         require_once('./Controllers/ScheduleController.php');

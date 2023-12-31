@@ -230,7 +230,7 @@ $(document).ready(function(){
 								if(checkNV($row['maHoSo'])) {
 									echo '<td class="table-cell"><a href="?route=employee_info&paramMHS='.$row['maHoSo'].'">'.$row["hoTen"].'</a></td>';
 								} else {
-									echo '<td class="table-cell"><a href="?route=create_employee">'.$row["hoTen"].'</a></td>';
+									echo '<td class="table-cell"><a href="?route=create_employee&paramMHS='.$row['maHoSo'].'">'.$row["hoTen"].'</a></td>';
 								}
 								echo"<td class='table-cell'>".$row["gioiTinh"]."</td>";
 								echo"<td class='table-cell'>".$row["ngaySinh"]."</td>";
@@ -253,7 +253,7 @@ $(document).ready(function(){
 							if(checkNV($row['maHoSo'])) {
 								echo '<td class="table-cell"><a href="?route=employee_info&paramMHS='.$row['maHoSo'].'">'.$row["hoTen"].'</a></td>';
 							} else {
-								echo '<td class="table-cell"><a href="?route=create_employee">'.$row["hoTen"].'</a></td>';
+								echo '<td class="table-cell"><a href="?route=create_employee&paramMHS='.$row['maHoSo'].'">'.$row["hoTen"].'</a></td>';
 							}
 							echo"<td class='table-cell'>".$row["gioiTinh"]."</td>";
 							echo"<td class='table-cell'>".$row["ngaySinh"]."</td>";

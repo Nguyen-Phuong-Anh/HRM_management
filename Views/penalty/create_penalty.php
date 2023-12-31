@@ -1,5 +1,5 @@
 <form action="" method="post">
-  <h2 class="mb-4 mt-3">Tạo hồ sơ</h2>
+  <h2 class="mb-4 mt-3">Tạo kỷ luật</h2>
   <div class="form-outline" data-mdb-input-init>
     <input readonly name="maNhanVien" type="text" class="form-control form-control-lg" value="<?php echo isset($_GET['paramMNV']) ? $_GET['paramMNV'] : ''; ?>" />
     <label class="form-label">Mã nhân viên</label>

@@ -136,13 +136,32 @@
                 echo '
                 <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Sửa</button>
                 ';
-                echo "
-                <a href='?route=delete_employee&paramMHS" . urlencode($_GET["paramMHS"]) . "'>
-                    <button class='btn btn-danger'>Xóa</button>
-                </a>";
+                echo '
+                <button type="button" class="btn btn-danger" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#exampleModal1">
+                Xóa
+                </button>';
             }
         ?>
     </div>
+</div>
+
+<!-- delete modal -->
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Xác nhận xóa</h5>
+        <button type="button" class="btn-close" data-mdb-ripple-init data-mdb-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">Bạn có muốn xóa thông tin nhân viên này?</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-mdb-ripple-init data-mdb-dismiss="modal">Đóng</button>
+        <form action="" method="post">
+            <button class="btn btn-danger" type="submit" name="delete_employee">Xóa</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- modal -->

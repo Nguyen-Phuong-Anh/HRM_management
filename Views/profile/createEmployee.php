@@ -31,7 +31,7 @@
             <label class="form-label">Ngày kết thúc</label>
         </div>
 
-  <button type="submit" name="create_prf" class="btn btn-primary mt-4 mb-2" data-mdb-ripple-init>Save</button>
+  <button type="submit" name="create_prf" class="btn btn-primary mt-4 mb-2" data-mdb-ripple-init>Lưu</button>
 </form>
 
 <?php
