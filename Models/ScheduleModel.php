@@ -161,6 +161,8 @@
 
         public function createSchedule() {
             require('./Config/DBConn.php');
+            require_once('./Hooks/ValidationHooks.php');
+
             $stmt = mysqli_stmt_init($conn);
             
             $maGiangDay = '';
@@ -176,6 +178,14 @@
             $namHoc = $_POST['namhoc_selector'];
             $hocPhan = $_POST['hocPhan'];
             $gioGiangDay = $soTiet * $soTuanGiangDay;
+
+            if(checkSchedule($maNhanVien, $hocPhan)) {
+                echo '<script>alert("Khối lượng giảng dạy của giảng viên này cho học phần này đã tồn tại!")</script>';
+                echo "<script>
+                window.location = 'http://localhost/HRM_management/?route=schedule';
+                </script>";
+                exit();
+            }
 
             if($hocKy === '' || $namHoc === '' || $hocPhan === '') {
                 echo '<script>alert("Điền đầy đủ thông tin")</script>';

@@ -14,7 +14,18 @@
 
                 require_once('./Models/AuthModel.php');
                 $authoMod = new AuthModel();
-                $data = $authoMod->authenticate($username);
+                $data = $authoMod->authenticate($username, $pwd);
+                if(isset($data['tenTaiKhoan'])) {
+                    session_start();
+                    $_SESSION['username'] = $data['tenTaiKhoan'];
+                    header("Location: .?route=home");
+                    exit();
+                } else {
+                    echo '<script>alert("Tài khoản hoặc mật khẩu không đúng!")</script>';
+                    echo "<script>
+                        window.location = 'http://localhost/HRM_management/';
+                    </script>";
+                }
 
                 // $pwdHashed = $data['matKhau'];
                 // $checkPwd = password_verify($pwd, $pwdHashed);
@@ -30,11 +41,7 @@
                 //     header("Location: .?route=home");
                 //     exit();
                 // }
-                session_start();
-                $_SESSION['username'] = $data['tenTaiKhoan'];
-                $_SESSION['role'] = $data['maVaiTro'];
-                header("Location: .?route=home");
-                exit();
+                
             }
         }
 

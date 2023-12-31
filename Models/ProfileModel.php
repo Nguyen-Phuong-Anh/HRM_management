@@ -370,6 +370,12 @@
                 window.location = 'http://localhost/HRM_management/?route=create_prf';
                 </script>";
                 exit();
+            } else if(ProfileExisted($CCCD)) {
+                echo '<script>alert("Hồ sơ đã tồn tại!")</script>';
+                echo "<script>
+                window.location = 'http://localhost/HRM_management/?route=create_prf';
+                </script>";
+                exit();
             }
             $CCCDNgayCap = isset($_POST['CCCDNgayCap']) ? $_POST['CCCDNgayCap'] : '';
             $CCCDNoiCap = isset($_POST['CCCDNoiCap']) ? $_POST['CCCDNoiCap'] : '';
@@ -606,12 +612,21 @@
 
         public function createEmployee() {
             require('./Config/DBConn.php');
+            require_once('./Hooks/ValidationHooks.php');
+
             $maNhanVien = '';
             for ($i = 0; $i < 7; $i++) {
                 $maNhanVien .= mt_rand(0, 9); 
             }
             
             $maHS = $_GET['paramMHS'];
+            if(checkNV($maHS)) {
+                echo '<script>alert("Nhân viên đã tồn tại")</script>';
+                echo "<script>
+                window.location = 'http://localhost/HRM_management/?route=profile';
+                </script>";
+                exit();
+            }
             $bangCap = $_POST['bangCap'];
             $chucVu = $_POST['chucVu'];
             $phongBan = $_POST['phongBan'];
