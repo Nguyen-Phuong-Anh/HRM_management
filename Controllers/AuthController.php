@@ -18,7 +18,7 @@
                 if(isset($data['tenTaiKhoan'])) {
                     session_start();
                     $_SESSION['username'] = $data['tenTaiKhoan'];
-                    header("Location: .?route=home");
+                    header("Location: .?route=profile");
                     exit();
                 } else {
                     echo '<script>alert("Tài khoản hoặc mật khẩu không đúng!")</script>';

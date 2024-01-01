@@ -43,7 +43,7 @@
         require('./Config/DBConn.php');
 
         $stmt = mysqli_stmt_init($conn);
-        $sql = "SELECT * FROM thongtincoban WHERE CCCD= ?;";
+        $sql = "SELECT CCCD FROM thongtincoban WHERE CCCD= ?;";
         
         if(!mysqli_stmt_prepare($stmt, $sql)) { 
             header("Location: ./");
@@ -54,12 +54,12 @@
         mysqli_stmt_execute($stmt);
 
         $resultData = mysqli_stmt_get_result($stmt); 
-        $array = array();
-        while ($row = mysqli_fetch_assoc($resultData)) {
-            $array[] = $row;
-        }
-        if(isset($array[0]['maNhanVien'])) {
-            return true;
+        
+        if ($resultData) {
+            $rowCount = mysqli_num_rows($resultData);
+            if ($rowCount > 0) {
+                return true;
+            } else return false;
         } else return false;
     }
 
@@ -78,12 +78,11 @@
         mysqli_stmt_execute($stmt);
 
         $resultData = mysqli_stmt_get_result($stmt); 
-        $array = array();
-        while ($row = mysqli_fetch_assoc($resultData)) {
-            $array[] = $row;
-        }
-        if(isset($array[0]['maNhanVien'])) {
-            return true;
+        if ($resultData) {
+            $rowCount = mysqli_num_rows($resultData);
+            if ($rowCount > 0) {
+                return true;
+            } else return false;
         } else return false;
     }
 ?>

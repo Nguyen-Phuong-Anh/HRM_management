@@ -370,7 +370,8 @@
                 window.location = 'http://localhost/HRM_management/?route=create_prf';
                 </script>";
                 exit();
-            } else if(ProfileExisted($CCCD)) {
+            }
+            if(ProfileExisted($CCCD)) {
                 echo '<script>alert("Hồ sơ đã tồn tại!")</script>';
                 echo "<script>
                 window.location = 'http://localhost/HRM_management/?route=create_prf';
@@ -471,9 +472,31 @@
             $hoKhauThuongTru = isset($_POST['hoKhauThuongTru']) ? $_POST['hoKhauThuongTru'] : '';
             $diaChi = isset($_POST['diaChi']) ? $_POST['diaChi'] : '';
             $dienThoai = isset($_POST['dienThoai']) ? $_POST['dienThoai'] : '';
+            if(!phoneValidation($dienThoai)) {
+                echo '<script>alert("Nhập chính xác số điện thoại!")</script>';
+                echo "<script>
+                window.location = 'http://localhost/HRM_management/?route=create_prf';
+                </script>";
+                exit();
+            }
             $danToc = isset($_POST['danToc']) ? $_POST['danToc'] : '';
             $tonGiao = isset($_POST['tonGiao']) ? $_POST['tonGiao'] : '';
             $CCCD = isset($_POST['CCCD']) ? $_POST['CCCD'] : '';
+            if(!idCardValidation($CCCD)) {
+                echo '<script>alert("Nhập chính xác số căn cước!")</script>';
+                echo "<script>
+                window.location = 'http://localhost/HRM_management/?route=create_prf';
+                </script>";
+                exit();
+            }
+            if(ProfileExisted($CCCD)) {
+                echo '<script>alert("Hồ sơ đã tồn tại!")</script>';
+                echo "<script>
+                window.location = 'http://localhost/HRM_management/?route=create_prf';
+                </script>";
+                exit();
+            }
+            
             $CCCDNgayCap = isset($_POST['CCCDNgayCap']) ? $_POST['CCCDNgayCap'] : '';
             $CCCDNoiCap = isset($_POST['CCCDNoiCap']) ? $_POST['CCCDNoiCap'] : '';
             $trinhDoVanHoa = isset($_POST['trinhDoVanHoa']) ? $_POST['trinhDoVanHoa'] : '';
