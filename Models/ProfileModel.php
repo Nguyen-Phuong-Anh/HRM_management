@@ -412,16 +412,16 @@
                 $stmt->bind_param("sssssssss", $maHS, $trinhDoVanHoa, $noiKetNapDoan, $ngayKetNapDoan, $noiKetNapDang, $ngayKetNapDang, $khenThuong, $kyLuat, $soTruong);
 
                 if(mysqli_stmt_execute($stmt)) {
-                    echo '<script>alert("Successfully added to profile")</script>';
+                    echo '<script>alert("Thêm hồ sơ thành công!")</script>';
                     echo "<script>
                     window.location = 'http://localhost/HRM_management/?route=profile';
                     </script>";
                 } else {
-                    echo '<script>alert("Failed to add to profile")</script>';
+                    echo '<script>alert("Thêm thất bại!")</script>';
                 }
 
             } else {
-                echo '<script>alert("Failed to add to profile")</script>';
+                echo '<script>alert("Thêm thất bại!")</script>';
             }
 
             mysqli_stmt_close($stmt);
@@ -528,16 +528,16 @@
                 $stmt->bind_param("sssssssss", $trinhDoVanHoa, $noiKetNapDoan, $ngayKetNapDoan, $noiKetNapDang, $ngayKetNapDang, $khenThuong, $kyLuat, $soTruong, $maHoSo);
 
                 if(mysqli_stmt_execute($stmt)) {
-                    echo '<script>alert("Successfully update profile")</script>';
+                    echo '<script>alert("Sửa hồ sơ thành công!")</script>';
                     echo "<script>
                     window.location = 'http://localhost/HRM_management/?route=profile';
                     </script>";
                 } else {
-                    echo '<script>alert("Failed to update profile")</script>';
+                    echo '<script>alert("Sửa hồ sơ thất bại!")</script>';
                 }
 
             } else {
-                echo '<script>alert("Failed to update profile")</script>';
+                echo '<script>alert("Sửa hồ sơ thất bại!")</script>';
             }
             
             mysqli_stmt_close($stmt);
@@ -599,12 +599,12 @@
             $stmt->bind_param("ssssssss", $bangCap, $chucVu, $phongBan, $khoa, $email, $ngayBatDau, $ngayKetThuc, $maHoSo);
 
             if(mysqli_stmt_execute($stmt)) {
-                echo '<script>alert("Successfully update employee")</script>';
+                echo '<script>alert("Sửa nhân viên thành công!")</script>';
                 echo "<script>
                 window.location = 'http://localhost/HRM_management/?route=profile';
                 </script>";
             } else {
-                echo '<script>alert("Failed to update employee")</script>';
+                echo '<script>alert("Sửa thất bại!")</script>';
             }
             mysqli_stmt_close($stmt);
             $conn->close();
@@ -673,12 +673,12 @@
             $stmt->bind_param("s", $maHS);
             
             if(mysqli_stmt_execute($stmt)) {
-                echo '<script>alert("Successfully delete employee")</script>';
+                echo '<script>alert("Xóa nhân viên thành công!")</script>';
                 echo "<script>
                 window.location = 'http://localhost/HRM_management/?route=profile';
                 </script>";
             } else {
-                echo '<script>alert("Failed to delete employee")</script>';
+                echo '<script>alert("Xóa thất bại")</script>';   
             }
 
             mysqli_stmt_close($stmt);
@@ -710,15 +710,15 @@
                 $stmt->bind_param("s", $maHS);
                 
                 if(mysqli_stmt_execute($stmt)) {
-                    echo '<script>alert("Successfully delete profile")</script>';
+                    echo '<script>alert("Xóa thành công!")</script>';
                     echo "<script>
                     window.location = 'http://localhost/HRM_management/?route=profile';
                     </script>";
                 } else {
-                    echo '<script>alert("Failed to delete profile")</script>';   
+                    echo '<script>alert("Xóa thất bại")</script>';   
                 }
             } else {
-                echo '<script>alert("Failed to delete profile")</script>';
+                echo '<script>alert("Xóa thất bại")</script>';   
             }
 
             mysqli_stmt_close($stmt);

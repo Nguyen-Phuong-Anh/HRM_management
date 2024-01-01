@@ -242,12 +242,12 @@
             $stmt->bind_param("ssssssss", $maKT, $maNhanVien, $tenDotKhenThuong, $soQuyetDinh, $ngayKhenThuong, $loaiKhenThuong, $hinhThucKhenThuong, $trangThai);
 
             if(mysqli_stmt_execute($stmt)) {
-                echo '<script>alert("Successfully create bonus")</script>';
+                echo '<script>alert("Thêm khen thưởng thành công")</script>';
                 echo "<script>
                 window.location = 'http://localhost/HRM_management/?route=bonus';
                 </script>";
             } else {
-                echo '<script>alert("Failed to create bonus")</script>';
+                echo '<script>alert("Thêm thất bại!")</script>';
             }
 
             mysqli_stmt_close($stmt);
@@ -302,7 +302,7 @@
                 mysqli_stmt_bind_param($stmt, "sssssss", $tenDotKhenThuong, $soQuyetDinh, $ngayKhenThuong, $loaiKhenThuong, $hinhThucKhenThuong, $trangThai, $maKT);
         
                 if (mysqli_stmt_execute($stmt)) {
-                    echo '<script>alert("Successfully create bonus")</script>';
+                    echo '<script>alert("Sửa khen thưởng thành công")</script>';
                     echo "<script>
                     window.location = 'http://localhost/HRM_management/?route=bonus';
                     </script>";
@@ -331,12 +331,12 @@
 
             $stmt->bind_param("s", $maKT);
             if(mysqli_stmt_execute($stmt)) {
-                echo '<script>alert("Successfully delete bonus")</script>';
+                echo '<script>alert("Xóa khen thưởng thành công")</script>';
                 echo "<script>
                 window.location = 'http://localhost/HRM_management/?route=bonus';
                 </script>";
             } else {
-                echo '<script>alert("Failed to delete bonus")</script>';   
+                echo '<script>alert("Xóa thất bại")</script>';   
             }
         }
         

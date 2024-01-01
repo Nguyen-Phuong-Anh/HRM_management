@@ -239,12 +239,12 @@
             $stmt->bind_param("ssssss", $maKL, $maNhanVien, $loaiHinhKyLuat, $ngayKyLuat, $hinhThucKyLuat, $trangThai);
 
             if(mysqli_stmt_execute($stmt)) {
-                echo '<script>alert("Successfully create penalty")</script>';
+                echo '<script>alert("Thêm ký luật thành công")</script>';
                 echo "<script>
                 window.location = 'http://localhost/HRM_management/?route=penalty';
                 </script>";
             } else {
-                echo '<script>alert("Failed to create penalty")</script>';
+                echo '<script>alert("Thêm thất bại!")</script>';
             }
 
             mysqli_stmt_close($stmt);
@@ -295,7 +295,7 @@
                 mysqli_stmt_bind_param($stmt, "sssss", $loaiHinhKyLuat, $ngayKyLuat, $hinhThucKyLuat, $trangThai, $maKL);
         
                 if (mysqli_stmt_execute($stmt)) {
-                    echo '<script>alert("Successfully change penalty")</script>';
+                    echo '<script>alert("Sửa kỷ luật thành công")</script>';
                     echo "<script>
                     window.location = 'http://localhost/HRM_management/?route=penalty';
                     </script>";
@@ -324,12 +324,12 @@
 
             $stmt->bind_param("s", $maKL);
             if(mysqli_stmt_execute($stmt)) {
-                echo '<script>alert("Successfully delete penalty")</script>';
+                echo '<script>alert("Xóa kỷ luật thành công")</script>';
                 echo "<script>
                 window.location = 'http://localhost/HRM_management/?route=penalty';
                 </script>";
             } else {
-                echo '<script>alert("Failed to delete penalty")</script>';   
+                echo '<script>alert("Xóa thất bại")</script>';   
             }
         }
     }

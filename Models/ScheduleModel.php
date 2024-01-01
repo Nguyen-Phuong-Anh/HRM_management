@@ -60,8 +60,10 @@
                 $stmt2 = mysqli_stmt_init($conn);
             
                 if (!mysqli_stmt_prepare($stmt2, $sql2)) {
-                    header("Location: ./");
-                    exit();
+                    echo '<script>alert("Sửa thành công!")</script>';
+                    echo "<script>
+                    window.location = 'http://localhost/HRM_management/?route=schedule';
+                    </script>";
                 }
             
                 mysqli_stmt_bind_param($stmt2, "s", $row['maNhanVien']);
@@ -206,12 +208,12 @@
             mysqli_stmt_bind_param($stmt, "ssiiissss", $maGiangDay, $maNhanVien, $soTiet, $gioGiangDay, $soTuanGiangDay, $nhiemVu, $hocKy, $namHoc, $hocPhan);
 
             if(mysqli_stmt_execute($stmt)) {
-                echo '<script>alert("Successfully added to schedule")</script>';
+                echo '<script>alert("Thêm khối lượng giảng dạy thành công!")</script>';
                 echo "<script>
                 window.location = 'http://localhost/HRM_management/?route=schedule';
                 </script>";
             } else {
-                echo '<script>alert("Failed to add to schedule")</script>';
+                echo '<script>alert("Thêm thất bại!")</script>';
             }
         }
 
@@ -264,19 +266,23 @@
                 mysqli_stmt_bind_param($stmt, "iisssis", $soTiet, $soTuanGiangDay, $nhiemVu, $hocKy, $namHoc, $gioGiangDay, $maGD);
         
                 if (mysqli_stmt_execute($stmt)) {
-                    echo '<script>alert("Successfully change schedule")</script>';
+                    echo '<script>alert("Sửa thành công!")</script>';
                     echo "<script>
                     window.location = 'http://localhost/HRM_management/?route=schedule';
                     </script>";
                 } else {
-                    header("Location: ./");
-                    exit();
+                    echo '<script>alert("Sửa thất bại!")</script>';
+                    echo "<script>
+                    window.location = 'http://localhost/HRM_management/?route=schedule';
+                    </script>";
                 }
         
                 mysqli_stmt_close($stmt);
             } else {
-                header("Location: ./");
-                exit();
+                echo '<script>alert("Sửa thất bại!")</script>';
+                echo "<script>
+                window.location = 'http://localhost/HRM_management/?route=schedule';
+                    </script>";
             }
         }
 
@@ -293,12 +299,12 @@
 
             $stmt->bind_param("s", $maGD);
             if(mysqli_stmt_execute($stmt)) {
-                echo '<script>alert("Successfully delete schedule")</script>';
+                echo '<script>alert("Xóa thành công!")</script>';
                 echo "<script>
                 window.location = 'http://localhost/HRM_management/?route=schedule';
                 </script>";
             } else {
-                echo '<script>alert("Failed to delete schedule")</script>';   
+                echo '<script>alert("Xóa thất bại")</script>';   
             }
         }
     }

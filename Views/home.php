@@ -152,12 +152,28 @@
     </ul>
     <hr>
     <div>
-        <a href='.?route=logout' class='nav-link text-white'>
+        <?php
+          if($route === 'home' || $route === 'profile' || $route === 'profile_info' || $route === 'employee_info' || $route === 'bonus' || $route === 'penalty' || $route === 'schedule' || $route === 'getSchedule') {
+            echo "<a href='.?route=logout' class='nav-link text-white'>
+            <svg class='bi me-2' width='16' height='16'><use xlink:href='#people-circle'></use></svg>
+            Đăng xuất
+            </a>";
+          } else {
+            echo '<button type="button" class="btn btn-toggle text-white align-items-center rounded" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#exampleModal2">
+            Đăng xuất
+            </button>';
+          }
+        ?>
+        <!-- <a href='.?route=logout' class='nav-link text-white'>
           <svg class='bi me-2' width='16' height='16'><use xlink:href='#people-circle'></use></svg>
           Đăng xuất
         </a>
+        <button type="button" class="btn btn-toggle text-white align-items-center rounded" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#exampleModal">
+        Đăng xuất
+        </button> -->
       </div>
   </div>
+
 
   <div class="body2">
       <?php
@@ -259,12 +275,29 @@
       $controller = new ViewController();
       $controller->showContract();
       break;
-      
-
     }
       ?>
   </div>
 </body>
+
+<!-- logout model -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Xác nhận đăng xuất</h5>
+          <button type="button" class="btn-close" data-mdb-ripple-init data-mdb-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">Bạn có muốn đăng xuất?</div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-mdb-ripple-init data-mdb-dismiss="modal">Đóng</button>
+          <a href='.?route=logout' class='nav-link'>
+            <svg class='bi me-2' width='16' height='16'><use xlink:href='#people-circle'></use></svg>
+            Đăng xuất
+          </a>
+        </div>
+      </div>
+</div>
 </html>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
