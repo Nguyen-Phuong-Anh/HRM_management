@@ -171,7 +171,7 @@ $(document).ready(function(){
 						<div class="filter-group">
 							<label>Phòng ban</label>
 							<select class="form-control" name="phongBan">
-							<option value="">Tất cả</option>
+								<option value="">Tất cả</option>
 								<?php
 									while ($row = mysqli_fetch_assoc($result[1])) {
 										echo '<option value="'.$row['tenPB'].'">'.$row['tenPB'].'</option>';

@@ -44,7 +44,7 @@
                 </a>';
                 echo '<a href="?route=create_bonus&paramMNV=' . urlencode($data[0][0]['maNhanVien']) . '" class="list-group-item list-group-item-action px-3 border-0" aria-current="true">Khen thưởng</a>';
                 echo '<a href="?route=create_penalty&paramMNV=' . urlencode($data[0][0]['maNhanVien']) . '" class="list-group-item list-group-item-action px-3 border-0" aria-current="true">Kỷ luật</a>';
-                if($data[0][0]['phongBan'] === 'khoa và bộ môn') {
+                if($data[0][0]['phongBan'] === 'Khoa và bộ môn') {
                     echo '<a href="?route=create_schedule&paramMNV=' . urlencode($data[0][0]['maNhanVien']) . '&khoa=' . $data[0][0]['khoa'] . '" class="list-group-item list-group-item-action px-3 border-0" aria-current="true">Khối lượng giảng dạy</a>';
                 }
                 

@@ -1,3 +1,8 @@
+<?php
+    require_once('./Controllers/ProfileController.php');
+	$controller = new ProfileController();
+	$result = $controller->handleGetProfileFilter();
+?>
 <form action="" method="post">
   <h2 class="mb-4 mt-5">Tạo nhân viên</h2>
   <div class="modal-body">
@@ -9,13 +14,27 @@
             <input required name="chucVu" type="text" class="form-control form-control-lg">
             <label class="form-label">Chức vụ</label>
         </div>
-        <div class="form-outline mt-3" data-mdb-input-init>
-            <input required name="phongBan" type="text" class="form-control form-control-lg">
-            <label class="form-label">Phòng ban</label>
+        <div class="filter-group mt-3">
+            <label>Phòng ban</label>
+            <select class="form-control" name="phongBan">
+                <option value="">Tất cả</option>
+                <?php
+                    while ($row = mysqli_fetch_assoc($result[1])) {
+                        echo '<option value="'.$row['tenPB'].'">'.$row['tenPB'].'</option>';
+                    }
+                ?>					
+            </select>
         </div>
-        <div class="form-outline mt-3" data-mdb-input-init>
-            <input required name="khoa" type="text" class="form-control form-control-lg">
-            <label class="form-label">Khoa</label>
+        <div class="filter-group">
+            <label>Khoa</label>
+            <select class="form-control" name="khoa">
+                <option value="">Tất cả</option>
+                <?php
+                    while ($row = mysqli_fetch_assoc($result[0])) {
+                        echo '<option value="'.$row['tenKhoa'].'">'.$row['tenKhoa'].'</option>';
+                    }
+                ?>
+            </select>
         </div>
         <div class="form-outline mt-3" data-mdb-input-init>
             <input name="email" type="email" class="form-control form-control-lg">
