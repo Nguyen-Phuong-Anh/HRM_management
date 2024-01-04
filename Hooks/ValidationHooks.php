@@ -8,7 +8,7 @@
     }
 
     function idCardValidation($number) {
-        $idRegex = '/^\d{11}$/';
+        $idRegex = '/^\d{12}$/';
         if (!preg_match($idRegex, $number)) {
             return false;
         }
